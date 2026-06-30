@@ -154,12 +154,12 @@ img{display:block;max-width:100%}
 .vf-hero .bl{bottom:0;left:0;border-right:0;border-top:0;border-color:var(--red)}
 .vf-hero .br{bottom:0;right:0;border-left:0;border-top:0}
 
-.hero-dots{position:absolute;z-index:4;bottom:36px;left:50%;transform:translateX(-50%);display:flex;gap:10px}
+.hero-dots{position:absolute;z-index:4;bottom:74px;left:50%;transform:translateX(-50%);display:flex;gap:10px}
 .hero-dots button{width:32px;height:4px;border-radius:2px;border:0;background:rgba(255,255,255,.3);cursor:pointer;padding:0;transition:background .3s}
 .hero-dots button.active{background:var(--teal)}
 
 .scroll-cue{
-  position:absolute;z-index:4;bottom:30px;right:clamp(20px,5vw,60px);
+  position:absolute;z-index:4;bottom:20px;left:50%;transform:translateX(-50%);
   display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--muted);
   font-size:.66rem;letter-spacing:.25em;text-transform:uppercase;cursor:pointer;
 }
@@ -167,7 +167,7 @@ img{display:block;max-width:100%}
 .scroll-cue .arrow{animation:bob 1.8s var(--ease) infinite}
 @keyframes bob{0%,100%{transform:translateY(0);opacity:.4}50%{transform:translateY(7px);opacity:1}}
 @media (prefers-reduced-motion:reduce){.scroll-cue .arrow{animation:none}}
-@media (max-width:560px){.hero-dots{bottom:88px}.scroll-cue{left:50%;right:auto;transform:translateX(-50%);bottom:26px}.scroll-cue span{display:none}}
+@media (max-width:560px){.hero-dots{bottom:74px}.scroll-cue{left:50%;right:auto;transform:translateX(-50%);bottom:26px}.scroll-cue span{display:none}}
 
 /* ====================================================
    SOMOS
