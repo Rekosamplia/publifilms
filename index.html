@@ -325,6 +325,16 @@ img{display:block;max-width:100%}
   align-items:center;justify-content:center;transition:opacity .6s var(--ease)}
 #page-loader.hide{opacity:0;pointer-events:none}
 #page-loader .loader-mark{width:64px;height:64px}
+
+/* ====================================================
+   SCROLL REVEAL
+==================================================== */
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+.reveal-delay-4{transition-delay:.4s}
 </style>
 </head>
 <body>
@@ -442,10 +452,10 @@ img{display:block;max-width:100%}
 
 <!-- SOMOS -->
 <section class="section" id="somos">
-  <div class="section-head" style="margin-bottom:0">
+  <div class="section-head reveal" style="margin-bottom:0">
     <span class="eyebrow">Somos</span>
   </div>
-  <div class="somos-grid" style="margin-top:34px">
+  <div class="somos-grid reveal reveal-delay-1" style="margin-top:34px">
     <p class="lead">Especialistas en la mente del consumidor. <em style="font-style:normal;color:var(--teal)">Convertimos cada acción en una experiencia que vende.</em></p>
     <div>
       <p class="body">Somos una empresa especializada en Servicios de Marketing Promocional. Unimos marcas y consumidores de una forma muy creativa. Somos especialistas en la mente del consumidor y sabemos cómo adecuar a cada target la acción específica para generar ventas.</p>
@@ -462,12 +472,12 @@ img{display:block;max-width:100%}
 
 <!-- SERVICIOS -->
 <section class="section" id="servicios">
-  <div class="section-head">
+  <div class="section-head reveal">
     <span class="eyebrow">Servicios</span>
     <h2>Marketing 360º, de la idea a la calle.</h2>
-    <p class="serv-intro">Ofrecemos servicios de marketing 360º de calidad excelente gracias a un personal altamente cualificado que dará seguimiento a tus acciones y te prestará el trato más cercano 24 horas al día, 365 días al año.</p>
+    <p class="serv-intro reveal reveal-delay-1">Ofrecemos servicios de marketing 360º de calidad excelente gracias a un personal altamente cualificado que dará seguimiento a tus acciones y te prestará el trato más cercano 24 horas al día, 365 días al año.</p>
   </div>
-  <div class="serv-grid">
+  <div class="serv-grid reveal reveal-delay-2">
     <article class="serv-card" style="--c:var(--teal)">
       <span class="vf"><span class="tl"></span><span class="tr"></span><span class="bl"></span><span class="br"></span></span>
       <span class="serv-num">01</span>
@@ -501,11 +511,11 @@ img{display:block;max-width:100%}
 
 <!-- PORTFOLIO -->
 <section class="section" id="portfolio">
-  <div class="section-head">
+  <div class="section-head reveal">
     <span class="eyebrow">Portfolio</span>
     <h2>Nuestro mejor CV son nuestros clientes.</h2>
   </div>
-  <div class="port-grid" id="portGrid"><!-- cards injected by JS --></div>
+  <div class="port-grid reveal reveal-delay-1" id="portGrid"><!-- cards injected by JS --></div>
 </section>
 
 <!-- PROJECT DETAIL VIEW -->
@@ -546,16 +556,16 @@ img{display:block;max-width:100%}
 
 <!-- CLIENTES -->
 <section class="section" id="clientes">
-  <div class="section-head">
+  <div class="section-head reveal">
     <span class="eyebrow">Clientes</span>
     <h2>Marcas que han confiado en nosotros.</h2>
   </div>
-  <div class="cli-grid" id="cliGrid"><!-- logos injected --></div>
+  <div class="cli-grid reveal reveal-delay-1" id="cliGrid"><!-- logos injected --></div>
 </section>
 
 <!-- CONTACTO -->
 <section class="section" id="contacto">
-  <div class="contact-grid">
+  <div class="contact-grid reveal">
     <div>
       <span class="eyebrow">Contacto</span>
       <p class="contact-lead" style="margin-top:22px">Si quieres conocer lo que hacemos, pedir presupuesto o <em>formar parte de nuestro equipo</em>, contáctanos.</p>
@@ -763,6 +773,19 @@ CLIENT_LOGOS.forEach(c=>{
 });
 
 document.getElementById('yr').textContent=new Date().getFullYear();
+
+/* ---------- scroll reveal ---------- */
+(function(){
+  const els=document.querySelectorAll('.reveal');
+  if(!els.length)return;
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}
+    });
+  },{threshold:0.12});
+  els.forEach(el=>io.observe(el));
+})();
+
 </script>
 </body>
 </html>
